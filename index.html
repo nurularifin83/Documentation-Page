@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test Responsive Menu</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+    </body>
+    </head>
+    <body>
+        <div class="row">
+            <div class="left">
+                <nav class="myMenu" id="navbar">
+                    <header class="site_name">
+                        Sass Documentation
+                        <div class="line-jd"></div>
+                    </header>
+                    <li>
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#introduction" class="nav-link">
+                            Introduction
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Store_Data_with_Sass_Variables" class="nav-link">
+                            Store Data with Sass Variables
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Nest_CSS_with_Sass" class="nav-link">
+                            Nest CSS with Sass
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Create_Reusable_CSS_with_Mixins" class="nav-link">
+                            Create Reusable CSS with Mixins
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Use_@if_and_@else_to_Add_Logic_To_Your_Styles" class="nav-link">
+                            Use @if and @else to Add Logic To Your Styles
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Use_@for_to_Create_a_Sass_Loop" class="nav-link">
+                            Use @for to Create a Sass Loop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Use_@each_to_Map_Over_Items_in_a_List" class="nav-link">
+                            Use @each to Map Over Items in a List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Apply_a_Style_Until_a_Condition_is_Met_with_@while" class="nav-link">
+                            Apply a Style Until a Condition is Met with @while
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Split_Your_Styles_into_Smaller_Chunks_with_Partials" class="nav-link">
+                            Split Your Styles into Smaller Chunks with Partials
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Extend_One_Set_of_CSS_Styles_to_Another_Element" class="nav-link">
+                            Extend One Set of CSS Styles to Another Element
+                        </a>
+                    </li>
+                </nav>
+            </div>
+            <div class="right">
+                <main id="main-doc">
+                    <section class="main-section" id="introduction">
+                        <header class="heading-one"><h1>Introduction</h1></header>
+                        <article>
+                          <p>
+                            Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, 
+                            nested rules, mixins, functions, and more, all with a fully CSS-compatible syntax. 
+                            Sass helps keep large stylesheets well-organized and makes it easy to share design 
+                            within and across projects.
+                          </p>
+                         <ul>
+                            <li>
+                                If you’re looking for an introduction to Sass, check out <a href="https://sass-lang.com/guide/" target="_blank">the tutorial.</a>
+                            </li>
+                            <li>If you want to look up a built-in Sass function, look no further than <a href="https://sass-lang.com/documentation/modules/" target="_blank">the built-in module reference.</a></li>
+                            <li>If you’re calling Sass from JavaScript, you may want the <a href="https://github.com/sass/node-sass#usage" target="_blank">JS API documentation.</a></li>
+                            <li>Or the <a href="https://pub.dev/documentation/sass/latest/sass/sass-library.html" target="_blank">Dart API documentation</a> if you’re calling it from Dart.</li>
+                            <li>Otherwise, use the table of contents for the language reference!</li>
+                        </ul>
+                        <h2>Older Versions</h2>
+                        <p>
+                            This documentation is written for the most recent version 
+                            of the Sass language. If you’re using Dart Sass 1.69.6, you’ll have access to 
+                            all the features described here. But if you’re using an older version of Dart Sass or a 
+                            deprecated Sass implementation like LibSass or Ruby Sass, there may be some behavioral 
+                            differences.
+
+                        </p>
+                        </article>
+                      </section>
+                      <section class="main-section" id="Store_Data_with_Sass_Variables">
+                        <header class="heading-one"><h1>Store Data with Sass Variables</h1></header>
+                        <article>
+                            <p>
+                                One feature of Sass that's different than CSS is it uses variables. They are declared and set to store data, similar to JavaScript.
+                            </p>
+                            <p>
+                                In JavaScript, variables are defined using the let and const keywords. In Sass, variables start with a $ followed by the variable name.
+                            </p>
+                            <p>
+                                Here are a couple examples:
+                            </p>
+                           <code>$main-fonts: Arial, sans-serif;
+                            $headings-color: green;
+                           </code>
+                           <p>And to use the variables:</p>
+                           <code>h1 {
+                                font-family: $main-fonts;
+                                color: $headings-color;
+                              }
+                           </code>
+                        <p>One example where variables are useful is when a number of elements need to be the same color. If that color is changed, the only place to edit the code is the variable value.</p>
+                        </article>
+                      </section>
+                      <section class="main-section" id="Nest_CSS_with_Sass">
+                        <header class="heading-one"><h1>Nest CSS with Sass</h1></header>
+                        <article>
+                            <p>Sass allows nesting of CSS rules, which is a useful way of organizing a style sheet.</p>
+                            <p>Normally, each element is targeted on a different line to style it, like so:</p>
+                            <code>article {
+                                    height: 200px;
+                                  }
+                                  
+                                  article p {
+                                    color: white;
+                                  }
+                                  
+                                  article ul {
+                                    color: blue;
+                                  }
+                            </code>
+                            <p>
+                                For a large project, the CSS file will have many lines and rules. This is where nesting can help organize your code by placing child style rules within the respective parent elements:
+                            </p>
+                            <code>article {
+                                height: 200px;
+                              
+                                p {
+                                  color: white;
+                                }
+                              
+                                ul {
+                                  color: blue;
+                                }
+                              }
+                            </code>
+                        </article>
+                      </section>
+                      <section class="main-section" id="Create_Reusable_CSS_with_Mixins">
+                        <header class="heading-one"><h1>Create Reusable CSS with Mixins</h1></header>
+                        <article>
+                            <p>
+                                In Sass, a mixin is a group of CSS declarations that can be reused throughout the style sheet.
+                            </p>
+                            <p>
+                                Newer CSS features take time before they are fully adopted and ready to use in all browsers. As features are added to browsers, CSS rules using them may need vendor prefixes. Consider <strong>box-shadow</strong> :
+                            </p>
+                            <code>div {
+                                    -webkit-box-shadow: 0px 0px 4px #fff;
+                                    -moz-box-shadow: 0px 0px 4px #fff;
+                                    -ms-box-shadow: 0px 0px 4px #fff;
+                                    box-shadow: 0px 0px 4px #fff;
+                                  }
+                            </code>
+                            <p>
+                                It's a lot of typing to re-write this rule for all the elements that have a box-shadow, or to change each value to test different effects. Mixins are like functions for CSS. Here is how to write one:
+                            </p>
+                            <code>@mixin box-shadow($x, $y, $blur, $c){ 
+                                -webkit-box-shadow: $x $y $blur $c;
+                                -moz-box-shadow: $x $y $blur $c;
+                                -ms-box-shadow: $x $y $blur $c;
+                                box-shadow: $x $y $blur $c;
+                              }</code>
+                              <p>
+                                The definition starts with <strong>@mixin</strong> followed by a custom name. The parameters (the <strong>$x</strong>, <strong>$y</strong>, <strong>$blur</strong>, and <strong>$c</strong> in the example above) are optional. Now any time a <strong>box-shadow</strong> rule is needed, only a single line calling the mixin replaces having to type all the vendor prefixes. A mixin is called with the <strong>@include</strong> directive:
+                              </p>
+                              <code>div {
+                                @include box-shadow(0px, 0px, 4px, #fff);
+                              }</code>
+                        </article>
+                      </section>
+                      <section class="main-section" id="Use_@if_and_@else_to_Add_Logic_To_Your_Styles">
+                        <header class="heading-one"><h1>Use @if and @else to Add Logic To Your Styles
+                        </h1></header>
+                        <p>
+                            The <strong>@if</strong> directive in Sass is useful to test for a specific case - it works just like the <strong>if</strong> statement in JavaScript.
+                        </p>
+                        <code>@mixin make-bold($bool) {
+                            @if $bool == true {
+                              font-weight: bold;
+                            }
+                          }</code>
+                          <p>
+                            And just like in JavaScript, the <strong>@else if</strong> and <strong>@else</strong> directives test for more conditions:
+                          </p>
+                          <code>@mixin text-effect($val) {
+                            @if $val == danger {
+                              color: red;
+                            }
+                            @else if $val == alert {
+                              color: yellow;
+                            }
+                            @else if $val == success {
+                              color: green;
+                            }
+                            @else {
+                              color: black;
+                            }
+                          }</code>
+                      </section>
+                      <section class="main-section" id="Use_@for_to_Create_a_Sass_Loop">
+                        <header class="heading-one"><h1>Use @for to Create a Sass Loop</h1></header>
+                        <p>The <strong>@for</strong> directive adds styles in a loop, very similar to a <strong>for</strong> loop in JavaScript.</p>
+                        <p>
+                            <strong>@for</strong> is used in two ways: "start through end" or "start to end". The main difference is that the "start to end" excludes the end number as part of the count, and "start through end" includes the end number as part of the count.
+                        </p>
+                        <p>Here's a start through end example:</p>
+                        <code>@for $i from 1 through 12 {
+                            .col-#{$i} { width: 100%/12 * $i; }
+                          }</code>
+                          <p>The <strong>#{$i}</strong> part is the syntax to combine a variable <strong>(i)</strong> with text to make a string. When the Sass file is converted to CSS, it looks like this:</p>
+                          <code>.col-1 {
+                            width: 8.33333%;
+                          }
+                          
+                          .col-2 {
+                            width: 16.66667%;
+                          }
+                          
+                          ...
+                          
+                          .col-12 {
+                            width: 100%;
+                          }</code>
+                          <p>This is a powerful way to create a grid layout. Now you have twelve options for column widths available as CSS classes.
+                          </p>
+                    </section>
+                    <section class="main-section" id="Use_@each_to_Map_Over_Items_in_a_List">
+                        <header class="heading-one"><h1>Use @each to Map Over Items in a List
+                        </h1></header>
+                        <p>
+                            The last challenge showed how the <strong>@for</strong> directive uses a starting and ending value to loop a certain number of times. Sass also offers the <strong>@each</strong> directive which loops over each item in a list or map. On each iteration, the variable gets assigned to the current value from the list or map.
+                        </p>
+                        <code>@each $color in blue, red, green {
+                            .#{$color}-text {color: $color;}
+                          }</code>
+                          <p>A map has slightly different syntax. Here's an example:
+                          </p>
+                          <code>$colors: (color1: blue, color2: red, color3: green);
+
+                            @each $key, $color in $colors {
+                              .#{$color}-text {color: $color;}
+                            }</code>
+                            <p>
+                                Note that the <strong>$key</strong> is needed to reference the keys in the map. Otherwise, the compiled CSS would have <strong>color1, color2...</strong> in it. Both of the above code examples are converted into the following CSS:
+                            </p>
+                            <code>.blue-text {
+                                color: blue;
+                              }
+                              
+                              .red-text {
+                                color: red;
+                              }
+                              
+                              .green-text {
+                                color: green;
+                              }</code>
+                    </section>
+                    <section class="main-section" id="Apply_a_Style_Until_a_Condition_is_Met_with_@while">
+                        <header class="heading-one"><h1>Apply a Style Until a Condition is Met with @while</h1></header>
+                        <p>
+                            The <strong>@while</strong> directive is an option with similar functionality to the JavaScript <strong>while</strong> loop. It creates CSS rules until a condition is met.
+                        </p>
+                        <p>
+                            The <strong>@for</strong> challenge gave an example to create a simple grid system. This can also work with <strong>@while</strong>.
+                        </p>
+                        <code>$x: 1;
+                            @while $x < 13 {
+                              .col-#{$x} { width: 100%/12 * $x;}
+                              $x: $x + 1;
+                            }</code>
+                        <p>
+                            First, define a variable <strong>$x</strong> and set it to 1. Next, use the <strong>@while</strong> directive to create the grid system while <strong>$x</strong> is less than 13. After setting the CSS rule for <strong>width</strong>, <strong>$x</strong> is incremented by 1 to avoid an infinite loop.
+                        </p>
+                    </section>
+                    <section class="main-section" id="Split_Your_Styles_into_Smaller_Chunks_with_Partials">
+                        <header class="heading-one"><h1>Split Your Styles into Smaller Chunks with Partials</h1></header>
+                        <p><i>Partials</i> in Sass are separate files that hold segments of CSS code. These are imported and used in other Sass files. This is a great way to group similar code into a module to keep it organized.</p>
+                        <p>
+                            Names for partials start with the underscore <strong>(_)</strong> character, which tells Sass it is a small segment of CSS and not to convert it into a CSS file. Also, Sass files end with the <strong>.scss</strong> file extension. To bring the code in the partial into another Sass file, use the <strong>@import</strong> directive.
+                        </p>
+                        <p>For example, if all your mixins are saved in a partial named "_mixins.scss", and they are needed in the "main.scss" file, this is how to use them in the main file:</p>
+                        <code>@import 'mixins'</code>
+                        <p>
+                            Note that the underscore and file extension are not needed in the <strong>import</strong> statement - Sass understands it is a partial. Once a partial is imported into a file, all variables, mixins, and other code are available to use.
+                        </p>
+                    </section>
+                    <section class="main-section" id="Extend_One_Set_of_CSS_Styles_to_Another_Element">
+                        <header class="heading-one"><h1>Extend One Set of CSS Styles to Another Element</h1></header>
+                        <p>
+                            Sass has a feature called <strong>extend</strong> that makes it easy to borrow the CSS rules from one element and build upon them in another.
+                        </p>
+                        <p>
+                            For example, the below block of CSS rules style a <strong>.panel</strong> class. It has a <strong>background-color</strong>, <strong>height</strong> and <strong>border</strong>.
+                        </p>
+                        <code>.panel{
+                            background-color: red;
+                            height: 70px;
+                            border: 2px solid green;
+                          }</code>
+                          <p>
+                            Now you want another panel called <strong>.big-panel</strong>. It has the same base properties as <strong>.panel</strong>, but also needs a <strong>width</strong> and <strong>font-size</strong>. It's possible to copy and paste the initial CSS rules from <strong>.panel</strong>, but the code becomes repetitive as you add more types of panels. The <strong>extend</strong> directive is a simple way to reuse the rules written for one element, then add more for another:
+                          </p>
+                          <code>.big-panel{
+                            @extend .panel;
+                            width: 150px;
+                            font-size: 2em;
+                          }</code>
+                          <p>The <strong>.big-panel</strong> will have the same properties as <strong>.panel</strong> in addition to the new styles.
+                          </p>
+                    </section>
+                </main>
+            </div>
+        </div>
+        <!-- Script for mobile button act. -->
+        <script>
+            function myFunction(){
+                // const x = document.getElementById('myTopnav');
+                const x = document.getElementById('navbar');
+                if(x.className === 'myMenu') {
+                    x.className += " responsive";
+                } else {
+                    x.className = "myMenu";
+                }
+            }
+        </script>
+    </body>
+</html>
